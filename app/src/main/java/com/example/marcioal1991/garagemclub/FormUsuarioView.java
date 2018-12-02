@@ -39,7 +39,7 @@ public class FormUsuarioView extends AppCompatActivity {
     String masculino;
     String feminino;
 
-    ImageButton foto;
+    ImageButton foto; 
 
 
 
