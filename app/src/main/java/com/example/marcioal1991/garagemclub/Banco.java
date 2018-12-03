@@ -34,8 +34,6 @@ public class Banco {
                         "  sexo TEXT NOT NULL,\n" +
                         "  data_nascimento TEXT NOT NULL,\n" +
                         "  estado_civil TEXT NOT NULL,\n" +
-                        "  cliente INTEGER NOT NULL DEFAULT 0,\n" +
-                        "  proprietario INTEGER NOT NULL DEFAULT 0,\n" +
                         "  rg TEXT NOT NULL,\n" +
                         "  cpf TEXT NOT NULL,\n" +
                         "  endereco TEXT NOT NULL,\n" +
@@ -44,7 +42,7 @@ public class Banco {
                         "  estado TEXT NOT NULL DEFAULT 'RS',\n" +
                         "  cep TEXT NOT NULL,\n" +
                         "  telefone_fixo TEXT NOT NULL,\n" +
-                        "  telefone_celular TEXT NOT NULL,\n" +
+                        "  telefone_celular TEXT,\n" +
                         "  foto TEXT NOT NULL);"
         );
 
