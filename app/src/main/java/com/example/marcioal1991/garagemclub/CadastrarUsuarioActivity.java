@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -64,7 +65,7 @@ public class CadastrarUsuarioActivity extends Activity {
                 this.sexoRadio.getCheckedRadioButtonId() != 0;
     }
 
-    public void cadastrar() {
+    public void cadastrar(View view) {
         if (!this.validate()) {
             Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
             return;
