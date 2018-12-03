@@ -1,6 +1,7 @@
 package com.example.marcioal1991.garagemclub;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class Banco {
@@ -17,6 +18,12 @@ public class Banco {
                 "  login TEXT NOT NULL,\n" +
                 "  senha TEXT NOT NULL,\n" +
                 "  email TEXT NOT NULL);"
+        );
+
+        this.db.execSQL(
+                "CREATE TABLE IF NOT EXISTS session (\n" +
+                        "  id INTEGER NOT NULL PRIMARY KEY,\n" +
+                        "  user_id TEXT NOT NULL);"
         );
 
         this.db.execSQL(
@@ -57,7 +64,20 @@ public class Banco {
                         "    foto TEXT NOT NULL,\n" +
                         "    valor INTEGER NOT NULL);"
         );
-
     }
 
+
+    public int lastUserConnected() {
+        Cursor linhas = db.rawQuery("SELECT user_id FROM session ORDER BY id DESC LIMIT 1", null);
+
+        String retorno = "";
+        if(linhas.moveToFirst()){
+            do{
+                return linhas.getInt(0);
+            }
+            while(linhas.moveToNext());
+        }
+
+        return 0;
+    }
 }

@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".FormUsuarioView"></activity>
+        <activity android:name=".CriarGaragemActivity"></activity>
     </application>
 
 </manifest>
