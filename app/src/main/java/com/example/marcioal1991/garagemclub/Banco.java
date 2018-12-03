@@ -9,7 +9,7 @@ public class Banco {
 
     public Banco(Context ctx) {
         this.ctx = ctx;
-        this.db = this.ctx.openOrCreateDatabase("garagem_club", Context.MODE_PRIVATE);
+        this.db = this.ctx.openOrCreateDatabase("garagem_club", Context.MODE_PRIVATE,null);
 
         this.db.execSQL(
                 "CREATE TABLE IF NOT EXISTS garagem_club.usuarios (\n" +
