@@ -18,21 +18,6 @@ public class ListarGaragens extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_garagens);
-
-        List<Garagem> garagens = buscarTodasGaragens();
-
-        ListView listaGaragens = (ListView) findViewById(R.id.listaGaragens);
-
-        ArrayAdapter<Garagem> adapter = new ArrayAdapter<Garagem>(this, android.R.layout.simple_list_item_1);
-
-        listaGaragens.setAdapter(adapter);
     }
 
-    public List<Garagem> buscarTodasGaragens() {
-        try {
-            List<Garagem> garagens = new ArrayList<>();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 }

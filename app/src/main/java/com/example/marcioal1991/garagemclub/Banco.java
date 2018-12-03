@@ -6,14 +6,14 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class Banco {
     Context ctx = null;
-    private SQLiteDatabase db;
+    public SQLiteDatabase db;
 
     public Banco(Context ctx) {
         this.ctx = ctx;
         this.db = this.ctx.openOrCreateDatabase("garagem_club", Context.MODE_PRIVATE,null);
 
         this.db.execSQL(
-                "CREATE TABLE IF NOT EXISTS garagem_club.usuarios (\n" +
+                "CREATE TABLE IF NOT EXISTS usuarios (\n" +
                 "  id INTEGER NOT NULL PRIMARY KEY,\n" +
                 "  login TEXT NOT NULL,\n" +
                 "  senha TEXT NOT NULL,\n" +
@@ -49,7 +49,7 @@ public class Banco {
         );
 
         this.db.execSQL(
-                "CREATE TABLE IF NOT EXISTS garagem_club.`garagens` (\n" +
+                "CREATE TABLE IF NOT EXISTS garagens (\n" +
                         "    id INTEGER NOT NULL PRIMARY KEY,\n" +
                         "    proprietario_id INTEGER NOT NULL,\n" +
                         "    cliente_id INTEGER NOT NULL,\n" +
