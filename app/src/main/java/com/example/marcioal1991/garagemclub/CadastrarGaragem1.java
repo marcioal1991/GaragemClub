@@ -1,10 +1,14 @@
 package com.example.marcioal1991.garagemclub;
 
 import android.database.Cursor;
+import android.database.sqlite.SQLiteStatement;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.Toast;
 
 public class CadastrarGaragem1 extends AppCompatActivity {
 
@@ -27,6 +31,8 @@ public class CadastrarGaragem1 extends AppCompatActivity {
     String descricao;
     String observacao;
     String tamanho;
+
+    private Banco db = null;
 
 
     @Override
@@ -51,39 +57,40 @@ public class CadastrarGaragem1 extends AppCompatActivity {
         foto = (ImageButton) findViewById(R.id.ib_foto);
     }
 
-    public String cadastrarGaragem() {
-        Banco con = new Banco(this);
-
-        //Banco linhas = db.rawQuery("SELECT * FROM carro WHERE nome = '"+nome+"'", null);
-
-
+    public void cadastrarGaragem(View view) {
         cep = et_cep.toString();
-        estado = et_estado.toString();
-        cidade = et_cidade.toString();
-        bairro = et_bairro.toString();
-        endereco = et_endereco.toString();
-        descricao = et_endereco.toString();
-        observacao = et_observacao.toString();
-        tamanho = et_tamanho.toString();
+        estado = et_estado.getText().toString();
+        cidade = et_cidade.getText().toString();
+        bairro = et_bairro.getText().toString();
+        endereco = et_endereco.getText().toString();
+        descricao = et_endereco.getText().toString();
+        observacao = et_observacao.getText().toString();
+        tamanho = et_tamanho.getText().toString();
 
-        con.db.rawQuery("insert into garagens (cep, estado, cidade, bairro, endereco, descricao, observacao, tamanho) VALUES (" + cep + "," + estado + "," + cidade + "," + bairro + "," + endereco + "," + descricao + "," + observacao + "," + tamanho + ")",null);
+        Cursor linhas = db.db.rawQuery("SELECT id FROM garagens ORDER BY id DESC LIMIT 1", null);
 
-        Cursor linhas = con.db.rawQuery("SELECT * FROM garagens", null);
-        //poderia ser feito assim também:
-        //Cursor linhas = db.rawQuery("SELECT * FROM carro WHERE nome = ?", new String[] { nome });
-
-        String retorno = "";
-        if(linhas.moveToFirst()){ //retorna false se não há linhas na tabela
-            do{
-//                String id_garagens = linhas.getTest();
-            }
-            while(linhas.moveToNext()); //laço até a última linha da tabela
+        int proprietario_id = 0;
+        if (linhas.moveToFirst()) {
+            proprietario_id = linhas.getInt(0);
         }
-        con.db.close();
 
+        SQLiteStatement st = db.db.compileStatement("insert into pessoas (proprietario_id, cep, estado, cidade, bairro, endereco, descricao, observacao, tamanho) VALUES (?,?,?,?,?,?,?,?,?)");
 
+        st.bindLong(1, proprietario_id);
+        st.bindString(2, cep);
+        st.bindString(3, estado);
+        st.bindString(4, cidade);
+        st.bindString(5, bairro);
+        st.bindString(6, endereco);
+        st.bindString(7, descricao);
+        st.bindString(8, observacao);
+        st.bindString(9, tamanho);
 
-        return "teste";
+        st.execute();
+        st.clearBindings();
+
+        Toast.makeText(this, "Garagem Cadastrada", Toast.LENGTH_SHORT).show();
+        this.finish();
     }
 }
 
