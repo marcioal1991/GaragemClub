@@ -1,5 +1,6 @@
 package com.example.marcioal1991.garagemclub;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -62,23 +63,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void singUp(View view) {
-        Banco con = new Banco(this);
-        System.out.println("teste");
-        //Cursor insert = con.db.rawQuery("insert into usuarios (login,senha,email) values ('teste','1234','teste@teste.com')", null);
-        Cursor linhas = con.db.rawQuery("SELECT * FROM usuarios", null);
-        System.out.println("teste2");
-        String retorno = "";
-        if(linhas.moveToFirst()){ //retorna false se não há linhas na tabela
-            do{
-                String ID = linhas.getString(0);
-                String LOGIN = linhas.getString(1);
-                String SENHA = linhas.getString(2);
-                String EMAIL = linhas.getString(3);
-                retorno +=ID+","+ LOGIN+","+SENHA+","+EMAIL+"\n";
-                System.out.println(retorno);
-            }
-            while(linhas.moveToNext()); //laço até a última linha da tabela
-        }
-        con.db.close();
+        Intent it = new Intent(this, CadastrarUsuarioActivity.class);
+        this.startActivity(it);
     }
 }
