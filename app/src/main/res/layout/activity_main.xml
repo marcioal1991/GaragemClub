@@ -21,14 +21,14 @@
         android:id="@+id/singUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="71dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginTop="44dp"
         android:onClick="singUp"
         android:text="Cadastrar"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/singIn"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
-    <TextView
+    <EditText
         android:id="@+id/login"
         android:layout_width="223dp"
         android:layout_height="36dp"
@@ -36,9 +36,9 @@
         app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="Login" />
+        tools:hint="Login" />
 
-    <TextView
+    <EditText
         android:id="@+id/password"
         android:layout_width="224dp"
         android:layout_height="41dp"
@@ -46,6 +46,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Senha" />
+        android:inputType="textPassword"
+
+        tools:hint="Senha" />
+
 
 </android.support.constraint.ConstraintLayout>
