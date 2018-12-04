@@ -33,17 +33,17 @@ public class Banco {
                         "  nome TEXT NOT NULL,\n" +
                         "  sexo TEXT NOT NULL,\n" +
                         "  data_nascimento TEXT NOT NULL,\n" +
-                        "  estado_civil TEXT NOT NULL,\n" +
                         "  rg TEXT NOT NULL,\n" +
                         "  cpf TEXT NOT NULL,\n" +
+                        "  estado_civil TEXT NOT NULL,\n" +
                         "  endereco TEXT NOT NULL,\n" +
                         "  cidade TEXT NOT NULL,\n" +
                         "  bairro TEXT NOT NULL,\n" +
                         "  estado TEXT NOT NULL DEFAULT 'RS',\n" +
                         "  cep TEXT NOT NULL,\n" +
                         "  telefone_fixo TEXT NOT NULL,\n" +
-                        "  telefone_celular TEXT,\n" +
-                        "  foto TEXT NOT NULL);"
+                        "  telefone_celular TEXT DEFAULT NULL,\n" +
+                        "  foto TEXT DEFAULT NULL);"
         );
 
         this.db.execSQL(

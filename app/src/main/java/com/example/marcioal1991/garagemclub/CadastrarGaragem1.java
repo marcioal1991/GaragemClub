@@ -75,7 +75,7 @@ public class CadastrarGaragem1 extends AppCompatActivity {
         String retorno = "";
         if(linhas.moveToFirst()){ //retorna false se não há linhas na tabela
             do{
-                String id_garagens = linhas.getString();
+//                String id_garagens = linhas.getTest();
             }
             while(linhas.moveToNext()); //laço até a última linha da tabela
         }

@@ -25,6 +25,8 @@ public class CadastrarUsuarioActivity extends Activity {
     private EditText enderecoInput = null;
     private EditText telefoneInput = null;
     private RadioGroup sexoRadio = null;
+    private RadioGroup estadoCivilRadio = null;
+
     private Banco db = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class CadastrarUsuarioActivity extends Activity {
         this.enderecoInput = this.findViewById(R.id.enderecoInput);
         this.telefoneInput = this.findViewById(R.id.telefoneInput);
         this.sexoRadio = this.findViewById(R.id.sexoRadioGroup);
+        this.estadoCivilRadio = this.findViewById(R.id.estadoCivilGroup);
         this.db = new Banco(this);
     }
 
@@ -62,7 +65,8 @@ public class CadastrarUsuarioActivity extends Activity {
                 !this.bairroInput.getText().toString().equals("") &&
                 !this.enderecoInput.getText().toString().equals("") &&
                 !this.telefoneInput.getText().toString().equals("") &&
-                this.sexoRadio.getCheckedRadioButtonId() != 0;
+                this.sexoRadio.getCheckedRadioButtonId() != 0 &&
+                this.estadoCivilRadio.getCheckedRadioButtonId() != 0;
     }
 
     public void cadastrar(View view) {
@@ -85,12 +89,14 @@ public class CadastrarUsuarioActivity extends Activity {
             user_id = linhas.getInt(0);
         }
 
-        st = db.db.compileStatement("insert into pessoas (usuario_id, nome, sexo, data_nascimento, rg, cpf, endereco, cidade, bairro, estado, cep, telefone_fixo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+        st = db.db.compileStatement("insert into pessoas (usuario_id, nome, sexo, data_nascimento, rg, cpf, endereco, cidade, bairro, estado, cep, telefone_fixo, estado_civil) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
-        RadioButton radio = this.findViewById(this.sexoRadio.getCheckedRadioButtonId());
+        RadioButton sexoRadio = this.findViewById(this.sexoRadio.getCheckedRadioButtonId());
+        RadioButton estadoCivilRadio = this.findViewById(this.sexoRadio.getCheckedRadioButtonId());
+
         st.bindLong(1, user_id );
         st.bindString(2, this.nomeInput.getText().toString() );
-        st.bindString(3, radio.getText().toString() );
+        st.bindString(3, sexoRadio.getText().toString() );
         st.bindString(4, this.nascimentoInput.getText().toString());
         st.bindString(5, this.rgInput.getText().toString());
         st.bindString(6, this.cpfInput.getText().toString());
@@ -100,10 +106,12 @@ public class CadastrarUsuarioActivity extends Activity {
         st.bindString(10, this.estadoInput.getText().toString());
         st.bindString(11, this.cepInput.getText().toString());
         st.bindString(12, this.telefoneInput.getText().toString());
+        st.bindString(13, estadoCivilRadio.getText().toString());
 
         st.execute();
         st.clearBindings();
 
         Toast.makeText(this, "Usuário cadastrado", Toast.LENGTH_SHORT).show();
+        this.finish();
     }
 }
