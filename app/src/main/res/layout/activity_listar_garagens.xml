@@ -7,10 +7,22 @@
     android:orientation="vertical"
     tools:context=".ListarGaragens">
     <LinearLayout
-        android:id="@+id/mainLayout"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="cadastrarGaragem"
+            android:text="Cadastrar uma garagem" />
 
+        <LinearLayout
+            android:id="@+id/mainLayout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </LinearLayout>
     </LinearLayout>
+
 </ScrollView>

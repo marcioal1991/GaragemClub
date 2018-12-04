@@ -1,10 +1,13 @@
 package com.example.marcioal1991.garagemclub;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -27,6 +30,12 @@ public class ListarGaragens extends AppCompatActivity {
 
         this.mainLayout = this.findViewById(R.id.mainLayout);
         this.con = new Banco(this);
+    }
+
+    public void cadastrarGaragem(View view)
+    {
+        Intent it = new Intent(this, CadastrarGaragem1.class);
+        startActivity(it);
     }
 
     protected void showGarages() {

@@ -48,7 +48,10 @@ public class MainActivity extends AppCompatActivity {
 
         if(linhas.moveToFirst()) { //retorna false se não há linhas na tabela
             if ( linhas.getInt(0) > 0) {
-                System.out.println("teste passou");
+                Intent it = new Intent(this, ListarGaragens.class);
+                startActivity(it);
+                return;
+
             } else  {
                 String texto = "Login ou senha inválidos";
                 int duracao = Toast.LENGTH_SHORT;
