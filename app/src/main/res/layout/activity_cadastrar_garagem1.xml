@@ -73,6 +73,14 @@
         android:hint="Tamanho"
         android:inputType="numberDecimal" />
 
+    <EditText
+        android:id="@+id/et_valor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Valor do aluguel"
+        android:inputType="numberDecimal" />
+
     <ImageButton
         android:id="@+id/ib_foto"
         android:layout_width="match_parent"

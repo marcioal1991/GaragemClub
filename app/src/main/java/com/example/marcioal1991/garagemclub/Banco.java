@@ -50,7 +50,7 @@ public class Banco {
                 "CREATE TABLE IF NOT EXISTS garagens (\n" +
                         "    id INTEGER NOT NULL PRIMARY KEY,\n" +
                         "    proprietario_id INTEGER NOT NULL,\n" +
-                        "    cliente_id INTEGER NOT NULL,\n" +
+                        "    cliente_id INTEGER DEFAULT NULL,\n" +
                         "    endereco TEXT NOT NULL,\n" +
                         "    cidade TEXT NOT NULL,\n" +
                         "    bairro TEXT NOT NULL,\n" +
@@ -59,7 +59,7 @@ public class Banco {
                         "    tamanho INTEGER NOT NULL,\n" +
                         "    descricao TEXT NOT NULL,\n" +
                         "    observacao TEXT NOT NULL,\n" +
-                        "    foto TEXT NOT NULL,\n" +
+                        "    foto TEXT DEFAULT NULL,\n" +
                         "    valor INTEGER NOT NULL);"
         );
     }
