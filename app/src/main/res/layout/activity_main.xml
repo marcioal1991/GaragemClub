@@ -39,7 +39,7 @@
         app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:hint="Login" />
+        android:hint="Login" />
 
     <EditText
         android:id="@+id/password"
@@ -51,7 +51,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:inputType="textPassword"
 
-        tools:hint="Senha" />
+        android:hint="Senha" />
 
 
 </android.support.constraint.ConstraintLayout>
