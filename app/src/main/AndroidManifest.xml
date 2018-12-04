@@ -19,6 +19,7 @@
         <activity android:name=".FormUsuarioView"></activity>
         <activity android:name=".ListarGaragens"></activity>
         <activity android:name=".CriarGaragemActivity"></activity>
+        <activity android:name=".CadastrarGaragem1"></activity>
         <activity android:name=".CadastrarUsuarioActivity"></activity>
     </application>
 
