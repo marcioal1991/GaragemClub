@@ -4,8 +4,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteStatement;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 public class CadastrarGaragem1 extends AppCompatActivity {
@@ -32,6 +34,8 @@ public class CadastrarGaragem1 extends AppCompatActivity {
     String tamanho;
     String valor;
 
+    private Banco db = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +55,8 @@ public class CadastrarGaragem1 extends AppCompatActivity {
         foto = (ImageButton) findViewById(R.id.ib_foto);
     }
 
-    public void cadastrarGaragem() {
+    public void cadastrarGaragem(View view) {
         Banco con = new Banco(this);
-
         cep = et_cep.getText().toString();
         estado = et_estado.getText().toString();
         cidade = et_cidade.getText().toString();
